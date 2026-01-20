@@ -1,3 +1,4 @@
+[Practica_2]
 Consigna: ✍
 Armaremos grupos para avanzar de forma colaborativa en este ejercicio.
 Cada grupo deberá crear una tabla de inventario en Google Sheets con 10 artículos que puede
