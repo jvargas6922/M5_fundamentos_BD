@@ -15,7 +15,7 @@ Comandos básicos de SQL en PostgreSQL (Guía para principiantes)
 
     Crear una tabla
     CREATE TABLE estudiantes (
-        id SERIAL PRIMARY KEY,
+        id_estudiante SERIAL PRIMARY KEY,
         nombre VARCHAR(100),
         email VARCHAR(150),
         edad INTEGER,
