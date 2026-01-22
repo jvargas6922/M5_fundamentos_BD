@@ -34,7 +34,7 @@ simulacion
             1           |       palta           |  500  |
             2           |       tomate          |  500  |
             3           |       chucrut         |  500  |
-            4           |       vianesa         |   700 |
+            4           |       vianesa         |  700 |
 
     productos
         id_producto  |   nombre_producto     |  valor_producto   | 

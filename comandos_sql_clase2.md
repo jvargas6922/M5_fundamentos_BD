@@ -95,6 +95,42 @@ create table pedidos_detalle(
 	foreign key (producto_id) references productos (id_producto),
 	foreign key (ingrediente_id) references ingredientes(id_ingrediente)
 );
+
+
+-- registros de la tabla ingredientes
+insert into ingredientes (nombre_ingrediente, valor) 
+	values
+		('palta'  ,500),
+		('tomate' ,500),
+		('chucrut',500),
+		('vianesa',700);
+
+-- registros de la tabla productos
+insert into productos(nombre_producto, valor)
+	values
+		('completo dinamico', 3500),
+		('completo', 2500),
+		('americano', 2000),
+		('chacarrero', 3500),
+		('italiano', 3000);
+
+-- registros de la tabla clientes
+insert into clientes(nombre_cliente)
+	values
+		('Joffred'),
+		('Oscar'),
+		('Franco'),
+		('Lorena'),
+		('Raul');
+
+-- registros de la tabla pedidos y pedidos_detalle
+insert into pedidos(cliente_id) values(1);
+insert into pedidos_detalle (pedido_id, producto_id, cantidad, ingrediente_id)
+	values
+	(1, 1, 1, 1),
+	(1, 4, 1, 2),
+	(1, 5, 1, 4);
+
 	
 	
 
