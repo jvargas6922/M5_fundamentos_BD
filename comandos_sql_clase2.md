@@ -58,6 +58,43 @@ from
 		on i.estudiante_id = e.id_estudiante
 	join cursos c 
 		on i.curso_id = c.id_curso; 
+
+
+-- practica de tienda
+
+create table ingredientes(
+	id_ingrediente serial primary key,
+	nombre_ingrediente varchar(50) not null,
+	valor float
+);
+
+create table productos(
+	id_producto serial primary key,
+	nombre_producto varchar(50) not null,
+	valor float
+);
+
+create table clientes(
+	id_cliente serial primary key,
+	nombre_cliente varchar(60) not null
+);
+
+create table pedidos(
+	id_pedido serial primary key,
+	cliente_id integer,
+	foreign key(cliente_id) references clientes (id_cliente)
+);
+
+create table pedidos_detalle(
+	id_pedido_detalle serial primary key,
+	pedido_id integer,
+	producto_id integer,
+	cantidad integer,
+	ingrediente_id integer,
+	foreign key (pedido_id) references pedidos(id_pedido),
+	foreign key (producto_id) references productos (id_producto),
+	foreign key (ingrediente_id) references ingredientes(id_ingrediente)
+);
 	
 	
 
