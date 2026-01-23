@@ -7,7 +7,7 @@ select * from estudiantes e ;
  * Relaciones que pueden tener las tablas 
  * 	1)  1 - 1
  * 	2)  1 - N
- * 	3 	N - N 
+ * 	3) 	N - N 
  */
 
 
@@ -61,9 +61,9 @@ from
 	
 
 
--- Practica venta de completos
+-- Practica venta de completos base de datos llamada tienda
 /*
- * estrutura 
+estrutura 
     ingredientes
         id_ingrediente
         nombre_ingrediente
@@ -82,7 +82,7 @@ from
         id_pedido
         id_producto
         id_cliente
- * */
+ */
 
 /*
 create table ingredientes(
@@ -160,6 +160,7 @@ insert into pedidos_detalle (pedido_id, producto_id, cantidad, ingrediente_id)
 	(1, 4, 1, 2),
 	(1, 5, 1, 4);
 
+-- segundo pedido
 insert into pedidos(cliente_id) values(1);
 insert into pedidos_detalle (pedido_id, producto_id, cantidad, ingrediente_id)
 	values
@@ -169,7 +170,7 @@ insert into pedidos_detalle (pedido_id, producto_id, cantidad, ingrediente_id)
 -- ejemplo de sub-consultas
 select * from productos p where p.id_producto = 4;
 
-select p.id_producto  from productos p where p.id_producto = 4;
+select p.id_producto from productos p where p.id_producto = 4;
 
 -- consulta estatica.
 select * from pedidos_detalle pd where pd.producto_id = 4;
