@@ -58,15 +58,39 @@ from
 		on i.estudiante_id = e.id_estudiante
 	join cursos c 
 		on i.curso_id = c.id_curso; 
+	
 
 
--- practica de tienda
+-- Practica venta de completos
+/*
+ * estrutura 
+    ingredientes
+        id_ingrediente
+        nombre_ingrediente
+        valor
 
+    productos
+        id_producto
+        nombre_producto
+        valor
+
+    clientes
+        id_cliente
+        nombre_cliente
+
+    pedidos
+        id_pedido
+        id_producto
+        id_cliente
+ * */
+
+/*
 create table ingredientes(
 	id_ingrediente serial primary key,
 	nombre_ingrediente varchar(50) not null,
 	valor float
 );
+*/
 
 create table productos(
 	id_producto serial primary key,
@@ -95,7 +119,12 @@ create table pedidos_detalle(
 	foreign key (producto_id) references productos (id_producto),
 	foreign key (ingrediente_id) references ingredientes(id_ingrediente)
 );
-
+	
+select * from ingredientes i ;
+select * from productos p; 
+select * from clientes c;
+select * from pedidos p ;
+select * from pedidos_detalle pd; 
 
 -- registros de la tabla ingredientes
 insert into ingredientes (nombre_ingrediente, valor) 
@@ -131,9 +160,52 @@ insert into pedidos_detalle (pedido_id, producto_id, cantidad, ingrediente_id)
 	(1, 4, 1, 2),
 	(1, 5, 1, 4);
 
-	
-	
+insert into pedidos(cliente_id) values(1);
+insert into pedidos_detalle (pedido_id, producto_id, cantidad, ingrediente_id)
+	values
+	(2, 4, 1, 4);
 
+
+-- ejemplo de sub-consultas
+select * from productos p where p.id_producto = 4;
+
+select p.id_producto  from productos p where p.id_producto = 4;
+
+-- consulta estatica.
+select * from pedidos_detalle pd where pd.producto_id = 4;
+
+-- consulta por más de un producto
+
+select * from pedidos_detalle pd where pd.producto_id IN(4,5);
+
+
+
+select 
+	* 
+from 
+	pedidos_detalle pd  
+where 
+	pd.producto_id = (
+		select 
+			p.id_producto  
+		from 
+			productos p 
+		where 
+			p.id_producto = 4);
+
+-- consulta de un reporte de pedidos.
+
+
+select 
+	p.id_pedido,
+	c.nombre_cliente,
+	p2.nombre_producto,
+	p2.valor
+from 
+	pedidos p
+		join pedidos_detalle pd on p.id_pedido = pd.pedido_id
+		join clientes c on p.cliente_id = c.id_cliente
+		join productos p2 on pd.producto_id = p2.id_producto 
 
 
 
