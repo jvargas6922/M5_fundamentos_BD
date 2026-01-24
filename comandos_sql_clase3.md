@@ -83,6 +83,25 @@ from
 where
 	pd.producto_id = 7;
 
+---- consulta para saber que pedido contiene el completo chacarrero
+select 
+	p.id_pedido as numero_pedido,
+	c.nombre_cliente,
+	p2.nombre_producto
+from 
+	pedidos p
+		join pedidos_detalle pd 
+			on p.id_pedido = pd.pedido_id
+		join clientes c
+			on p.cliente_id = c.id_cliente
+		join productos p2
+			on pd.producto_id = p2.id_producto 
+where
+	pd.producto_id = 4;
+
+
+    
+
 			
 
 
