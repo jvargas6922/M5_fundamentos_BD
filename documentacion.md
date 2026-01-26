@@ -68,6 +68,10 @@ REGISTROS (DATOS)
 
 
 !!! Siempre usar WHERE, si no, se actualiza toda la tabla !!!
+                        IMPORTANTE
+                        
+                        IMPORTANTE
+!!! Siempre usar WHERE, si no, se borra todos los registros de toda la tabla !!!
 
     Eliminar un registro
         DELETE FROM estudiantes WHERE id = 1;
