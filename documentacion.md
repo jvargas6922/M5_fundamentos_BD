@@ -171,3 +171,12 @@ RIGHT JOIN (Unir tablas, incluso sin coincidencia)
 
     Qué hace:
         Muestra todos los cursos, incluso si no tienen estudiantes inscritos.
+
+-- Uso del group by y having
+-- El GROUP BY agrupa los resultados según un campo específico.
+-- Lo que hace el HAVING: filtra los resultados después de agruparlos con GROUP BY.
+
+    SELECT edad, COUNT(*) as cantidad
+    FROM estudiantes
+    GROUP BY edad
+    HAVING COUNT(*) > 1;
