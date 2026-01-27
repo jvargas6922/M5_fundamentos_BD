@@ -84,6 +84,10 @@ create table Currencies(
 
 -- creacion de las tablas Users, Transaction, Currencies
 
+-- creacion de la base de datos Alke Wallet
+
+-- creacion de las tablas Users, Transaction, Currencies
+
 /*
 create table Users(
     id_user serial primary key,
@@ -146,4 +150,21 @@ insert into currencies(currency_name,currency_symbol)
 		('Rial', '**R'),
 		('Dolar', '$'),
 		('Peso Chileno', 'CLP');
+
+
+-- consulta para saber los usuarios que envian y reciben las transacciones.
+select
+-- *
+	t.id_transaction as identificador,
+	u.name as usuario_envia,
+	u.email as correo_envia,
+	u2.name as usuario_recive,
+	u2.email as correo_recive,
+	t.amount as monto,
+	t.transaction_date as fecha_transacción
+from 
+	transactions t 
+		join users u on t.sender_user_id = u.id_user
+		join users u2 on t.receiver_user_id = u2.id_user;
+	
 
