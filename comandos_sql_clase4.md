@@ -93,7 +93,21 @@ from
 	join clientes c 
 		on p.cliente_id = c.id_cliente;  
 
+-- consultas con la base de datos pokemon
+select * from pokemon;
 
+select * from pokemon p where p.nombre like '%Zubat%'; 
 
+select * from pokemon p where p.nombre like '%Pidgey%'; -- 16
 
+select * from pokemon p where p.nombre like '%Caperpie%'; -- 10
 
+select * from pokemon p where p.numero_pokedex >= 10 and p.numero_pokedex <= 16;
+
+-- ultimo registro de la tabla
+select 
+	* 
+from 
+	pokemon p 
+order by 
+	p.numero_pokedex desc limit 1;
