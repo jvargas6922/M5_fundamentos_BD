@@ -88,6 +88,10 @@ create table Currencies(
 
 -- creacion de las tablas Users, Transaction, Currencies
 
+-- creacion de la base de datos Alke Wallet
+
+-- creacion de las tablas Users, Transaction, Currencies
+
 /*
 create table Users(
     id_user serial primary key,
@@ -166,5 +170,41 @@ from
 	transactions t 
 		join users u on t.sender_user_id = u.id_user
 		join users u2 on t.receiver_user_id = u2.id_user;
-	
 
+-- nos conectamos a la BD llamada Bootcamp
+-- crear la tabla inventario
+create table inventario(
+	id_inventario serial primary key,
+	nombre_producto varchar(60) not null,
+	precio decimal(10,2),
+	cantidad_disponible integer
+);
+
+-- retornar todos los registros de la tabla inventario
+select * from inventario i ;
+
+-- borrado de registros
+delete from inventario;
+
+-- agregar 3 registros a la tabla inventario
+insert into inventario (nombre_producto, precio, cantidad_disponible)
+	values
+		('Palet', 3000, 100),
+		('Plancha OSB', 12000, 30),
+		('Plancha de ZINC', 16500, 20);
+
+insert into inventario (nombre_producto, precio, cantidad_disponible)
+	values (100,3000, 100);
+
+-- conexion con la bd Alke_Wallet
+select * from users u ;
+insert into users(name, email, password, balance, created_at)
+	values
+		('Soraya', 'soraya@prueba.com', '123456789', '0', now()),
+		('Nancy', 'nancy@prueba.com', '12345678', '500', now()),
+		('Miryan', 'miryan@prueba.com', '123456777', '5000', now());
+
+select * from users u where u.created_at < '2026-01-27 00:00:00';
+
+delete from users
+	where created_at < '2026-01-27 00:00:00'
