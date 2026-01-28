@@ -1,4 +1,4 @@
--- registros de ususrios
+-- registros de usuarios
 select * from users u;
 -- registros de transacciones
 select * from transactions t ;
@@ -25,7 +25,6 @@ update transactions
 where amount < 50;
 
 --------------------------------
-practica clase 6
 -- crear una base de dato llamada empresa.
 -- crear un tabla llamada usuarios
 	/*
@@ -49,9 +48,9 @@ practica clase 6
 /*id_departamento
  * nombre
  * descripcion
- */
+ * */
 
- CREATE TABLE usuarios(
+CREATE TABLE usuarios(
 	id_usuario SERIAL PRIMARY KEY,
 	nombre VARCHAR(60) NOT NULL,
 	apellido VARCHAR(60) NOT NULL,
@@ -74,3 +73,52 @@ CREATE TABLE empleados(
 	fecha_ingreso TIMESTAMP,
 	FOREIGN KEY(departamento_id) REFERENCES departamentos(id_departamento)
 );
+
+select * from usuarios u ;
+select * from departamentos d ;
+select * from empleados e ;
+
+select 
+	-- e.*,
+	e.nombre,
+	e.apellido,
+	e.salario,
+	d.nombre,
+	d.descripcion 
+from 
+	empleados e
+	join departamentos d 
+		on e.departamento_id = d.id_departamento 
+	; 
+
+-- crear 3 registros para las tablas usuarios, empleados y departamentos
+insert into usuarios(nombre, apellido, rut, correo)
+	values
+		('Joffred', 'Vargas', '1111111-2', 'vargasj@prueba.com'),
+		('Natacha', 'Vargas', '1111111-3', 'vargasn@prueba.com'),
+		('Jonathan', 'Vargas', '1111111-4', 'vargasjj@prueba.com');
+
+insert into departamentos (nombre, descripcion)
+	values
+		('TI', 'Gente Buena'),
+		('Contabilidad', 'Los Pagan'),
+		('RRHH', 'Los Lomo Liso');
+
+insert into empleados
+	(nombre, apellido, salario, departamento_id, fecha_ingreso)
+	values
+		('Ivan','Zamorano', 500000, 3, now()),
+		('Oscar','Pezoa', 1200000, 1, now()),
+		('Jeff','Bezos', 1500000 , 2, now());
+
+update empleados
+ set salario = salario * 2
+ where departamento_id = 1;
+
+begin;
+delete from usuarios
+	where id_usuario = 3;
+rollback ;
+
+
+
