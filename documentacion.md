@@ -180,3 +180,27 @@ RIGHT JOIN (Unir tablas, incluso sin coincidencia)
     FROM estudiantes
     GROUP BY edad
     HAVING COUNT(*) > 1;
+
+-- comandos para la creacion de base de datos por comandos SQL
+    CREATE DATABASE nombre_basedatos;
+-- para conectarse a la base de datos en sql
+    \c nombre_basedatos;
+-- agregar un campo nuevo a una tabla
+    ALTER TABLE nombre_tabla ADD nombre_campo TIPO_DATO;
+-- eliminar un campo de una tabla
+    ALTER TABLE nombre_tabla DROP COLUMN nombre_campo;
+-- eliminar una tabla
+    DROP TABLE nombre_tabla;
+-- eliminar una base de datos
+    DROP DATABASE nombre_basedatos;
+-- crear un indice en una tabla
+    CREATE INDEX nombre_indice ON nombre_tabla (nombre_campo);
+-- eliminar un indice en una tabla
+    DROP INDEX nombre_indice;
+-- crear una vista
+    CREATE VIEW nombre_vista AS
+    SELECT columna1, columna2
+    FROM nombre_tabla
+    WHERE condicion;
+-- eliminar una vista
+    DROP VIEW nombre_vista;
