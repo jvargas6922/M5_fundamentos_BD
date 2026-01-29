@@ -187,6 +187,8 @@ RIGHT JOIN (Unir tablas, incluso sin coincidencia)
     \c nombre_basedatos;
 -- agregar un campo nuevo a una tabla
     ALTER TABLE nombre_tabla ADD nombre_campo TIPO_DATO;
+-- actualizar un campo en una tabla
+    ALTER TABLE nombre_tabla ALTER COLUMN nombre_campo TYPE NUEVO_TIPO_DATO;
 -- eliminar un campo de una tabla
     ALTER TABLE nombre_tabla DROP COLUMN nombre_campo;
 -- eliminar una tabla
@@ -202,5 +204,7 @@ RIGHT JOIN (Unir tablas, incluso sin coincidencia)
     SELECT columna1, columna2
     FROM nombre_tabla
     WHERE condicion;
+-- consultar una vista
+    SELECT * FROM nombre_vista;
 -- eliminar una vista
     DROP VIEW nombre_vista;
