@@ -86,9 +86,10 @@ insert into libros(titulo, autor_id, ano_publicacion, disponible)
 ALTER TABLE libros 
 	ALTER COLUMN ano_publicacion TYPE char(4);
 
-
 -- revisar si estan los registros creados
 select * from libros l;
+
+
 		
 
 

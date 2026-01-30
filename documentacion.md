@@ -208,3 +208,9 @@ RIGHT JOIN (Unir tablas, incluso sin coincidencia)
     SELECT * FROM nombre_vista;
 -- eliminar una vista
     DROP VIEW nombre_vista;
+
+-- Agregar campos que son claves foraneas cuando ya tenemos creada la tabla
+    ALTER TABLE nombre_tabla
+    ADD CONSTRAINT nombre_restriccion
+    FOREIGN KEY (nombre_campo)
+    REFERENCES tabla_referenciada(campo_referenciado);
