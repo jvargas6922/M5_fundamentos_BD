@@ -16,6 +16,7 @@ create table categorias(
 select * from libros l;
 select * from categorias c ;
 select * from autores a ;
+select * from ventas v;
 
 -- agregamos un nuevo llamado precio campo a nuestra tabla libros.
 --ALTER TABLE libros ADD precio decimal(10,2);
@@ -77,12 +78,53 @@ insert into libros(titulo, autor_id, disponible, precio, categoria_id)
 	values
 		('100 años de soledad', 3, true, 20000, 4);
 
--- query para evidenciar el error de nulidad en el campo titulo
 insert into libros(autor_id, disponible, precio, categoria_id)
 	values
 		(3, true, 1000, 4);
 
+-- agregamos el campo stock en la tabla libros
+ALTER TABLE libros ADD stock integer not null default 10;
+
+-- crear tabla ventas
+create table ventas(
+	id_venta serial primary key,
+	libro_id integer,
+	cantidad integer not null, 
+	fecha_venta date not null default current_date,
+	foreign key (libro_id) references libros (id_libro)
+);
 
 
+-- crear 2 regitros para las ventas
+insert into ventas(libro_id, cantidad)
+	values
+		(1, 1),
+		(2, 1);
+
+-- actualizar propiedades de un campo de mi tabla ventas
+ALTER TABLE ventas 
+	add constraint cantidad check (cantidad > 0);
+
+-- prueba de la validación del campo cantidad
+insert into ventas(libro_id, cantidad)
+	values
+		(1, 0);
+
+-- query para saber las categorias de los libros.
+
+select 
+	l.id_libro,
+	l.titulo,
+	concat(a.nombre, ' ' , a.apellido ) as autor,
+	--a.nombre,
+	--a.apellido,
+	l.ano_publicacion,
+	l.precio,
+	c.nombre_categoria
+from 
+	libros l
+	join autores a 
+		on l.autor_id = a.id_autor
+	join categorias c on l.categoria_id = c.id_categoria 
 
 

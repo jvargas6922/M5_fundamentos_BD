@@ -183,7 +183,7 @@ RIGHT JOIN (Unir tablas, incluso sin coincidencia)
 
 -- comandos para la creacion de base de datos por comandos SQL
     CREATE DATABASE nombre_basedatos;
-    
+
 -- para conectarse a la base de datos en sql
     \c nombre_basedatos;
 
@@ -225,3 +225,8 @@ RIGHT JOIN (Unir tablas, incluso sin coincidencia)
     ADD CONSTRAINT nombre_restriccion
     FOREIGN KEY (nombre_campo)
     REFERENCES tabla_referenciada(campo_referenciado);
+
+-- agregar la condicion check a un campo
+    ALTER TABLE nombre_tabla
+    ADD CONSTRAINT nombre_restriccion
+    CHECK (condicion);
