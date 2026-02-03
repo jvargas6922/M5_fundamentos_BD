@@ -230,3 +230,8 @@ RIGHT JOIN (Unir tablas, incluso sin coincidencia)
     ALTER TABLE nombre_tabla
     ADD CONSTRAINT nombre_restriccion
     CHECK (condicion);
+
+-- cambiar tipo de datos date a integer en campos de tipo fecha
+ALTER TABLE libros
+ALTER COLUMN anio TYPE INTEGER
+USING EXTRACT(YEAR FROM anio);

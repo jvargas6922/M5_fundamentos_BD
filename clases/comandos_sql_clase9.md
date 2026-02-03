@@ -52,3 +52,42 @@ create table prestamos(
 	foreign key (usuario_id) references usuarios(id_usuario),
 	foreign key (libro_id) references libros(id_libro)
 );
+
+select * from usuarios u ;
+select * from autores a ;
+select * from libros l;
+select * from prestamos p ;
+
+-- creacion de regitros.
+
+insert into usuarios(nombre_completo, rut, telefono, correo)
+	values
+		('Oscar Pezoa', '12345678-9','123456789', 'oscar@prueba.com'),
+		('Juan Perez', '12345678-8', '123456789', 'juan@prueba.com');
+
+insert into autores(nombre_completo, nacionalidad)
+	values
+		('Stephen King', 'EEUU'),
+		('Isaac Asimob', 'Rusia');
+
+insert into libros(autor_id, ISBN ,nombre,anio)
+	values
+		(1,'12345678', 'IT', 1986),
+		(1, '23456789', 'El resplandor', 1977),
+		(2, '34567890', 'Yo Robot', 1950),
+		(2, '45678901', 'Fundación', 1951);
+
+insert into prestamos(usuario_id, libro_id, fecha)
+	values
+		(1, 4, now());
+
+-- quiero ver los datos de la persona y el libro en el prestamo
+select 
+	p.id_prestamo, 
+	u.nombre_completo,
+	l.nombre,
+	p.fecha
+from 
+	prestamos p 
+	join usuarios u on p.usuario_id = u.id_usuario
+	join libros l on p.libro_id = l.id_libro;
