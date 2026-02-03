@@ -1,6 +1,6 @@
 Se crea un modelo entidad relacion con respecto a la problematica planteada
 
-
+en los recursos tiene el modelo entidad relacion en formato PDF.
 
 
 
@@ -12,7 +12,7 @@ create table usuarios(
 	rut varchar(12) unique not null,
 	telefono varchar(30) not null,
 	correo varchar(60) unique not null,
-	created_at timestamp current_timestamp,
+	created_at timestamp default current_timestamp,
 	updated_at timestamp,
 	deleted_at timestamp
 );
@@ -22,7 +22,7 @@ create table autores(
 	id_autor serial primary key,
 	nombre_completo varchar(80) not null,
 	nacionalidad varchar(30),
-	created_at timestamp current_timestamp,
+	created_at timestamp default current_timestamp,
 	updated_at timestamp,
 	deleted_at timestamp
 );
@@ -34,7 +34,7 @@ create table libros(
 	ISBN varchar(13) unique not null,
 	nombre varchar(50) not null,
 	anio date,
-	created_at timestamp current_timestamp,
+	created_at timestamp default current_timestamp,
 	updated_at timestamp,
 	deleted_at timestamp,
 	foreign key(autor_id) references autores(id_autor)
@@ -46,7 +46,7 @@ create table prestamos(
 	usuario_id integer,
 	libro_id integer,
 	fecha date,
-	created_at timestamp current_timestamp,
+	created_at timestamp default current_timestamp,
 	updated_at timestamp,
 	deleted_at timestamp,
 	foreign key (usuario_id) references usuarios(id_usuario),
