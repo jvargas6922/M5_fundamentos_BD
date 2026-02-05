@@ -235,3 +235,8 @@ RIGHT JOIN (Unir tablas, incluso sin coincidencia)
 ALTER TABLE libros
 ALTER COLUMN anio TYPE INTEGER
 USING EXTRACT(YEAR FROM anio);
+
+-- uso de sumatorias en consultas SQL
+SELECT SUM(edad) AS suma_edades FROM estudiantes;
+
+
